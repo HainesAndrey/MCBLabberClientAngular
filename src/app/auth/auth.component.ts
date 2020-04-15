@@ -9,13 +9,12 @@ import { AuthService } from '../MCBLabberAPI/auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  user: User
+  user: User = new User();
 
   constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.user = new User();
   }
 
   auth(){
