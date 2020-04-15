@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user';
 import { AuthService } from '../MCBLabberAPI/auth.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth',
@@ -20,8 +19,7 @@ export class AuthComponent implements OnInit {
   }
 
   auth(){
-    let errormessage = this.authService.gettoken(this.user);
-    alert(errormessage);
+    this.authService.getToken(this.user);
   }
 
 }

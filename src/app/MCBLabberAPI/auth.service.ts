@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { MCBLabberAPIService } from './mcblabber-api.service';
-import { HttpClient, HttpHandler, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { JWT } from '../auth/jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -18,21 +19,15 @@ export class AuthService extends MCBLabberAPIService {
     return localStorage.getItem('JWT') !== null;
   }
 
-  gettoken(user: User) {
-    let msg;
+  getToken(user: User) {
     this.post('/gettoken', user).subscribe(
-      (resp: any) => {
+      (resp: JWT) => {
         localStorage.setItem('JWT', JSON.stringify(resp));
-      },
-      (error: any) => {
-        msg = error;
       }
     );
-    return msg;
   }
 
   logout() {
     localStorage.removeItem('JWT');
   }
-
 }
