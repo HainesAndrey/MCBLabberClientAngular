@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
+import { AuthService } from '../MCBLabberAPI/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  user: User
+
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit(): void {
+    this.user = new User();
+  }
+
+  auth(){
+    let errormessage = this.authService.gettoken(this.user);
+    alert(errormessage);
   }
 
 }

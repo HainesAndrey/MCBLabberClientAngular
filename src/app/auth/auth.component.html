@@ -1,1 +1,6 @@
-<h1>auth wasdasdasdorks!</h1>
+<h1>Авторизация</h1>
+<div>
+    <input placeholder="Логин" type="text" [(ngModel)]="user.Name">
+    <input placeholder="Пароль" type="password" [(ngModel)]="user.Password">
+</div>
+<button (click)="auth()">Авторизироваться</button>
